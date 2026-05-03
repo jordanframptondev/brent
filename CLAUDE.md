@@ -36,7 +36,7 @@ Portfolio website for a custom home architecture business. Showcases completed p
 - Framework: [DECIDE: Next.js 15 App Router OR Astro OR plain Vite + React]
 - Styling: Tailwind CSS with CSS variables for theme tokens
 - Animation: GSAP + ScrollTrigger for scroll choreography, Framer Motion for component-level fades
-- Smooth scroll: Lenis (lightweight, plays well with GSAP)
+- Smooth scroll: Locomotive Scroll (integrates with GSAP ScrollTrigger)
 - Deployment: Vercel
 
 ## File Structure
@@ -60,11 +60,11 @@ Black and white, editorial, architectural. Reference: curtisdesigngroup.com/cont
 --ink-soft: #1A1A1A
 --rule: rgba(10,10,10,0.12)
 --overlay-dim: rgba(0,0,0,0.15)
-(Reserve --accent for later — leave undefined for now.)
+(No accent color — strictly black and white.)
 
 ### Typography
-- Display: a serif with architectural gravity (e.g., Fraunces, Editorial New, or a paid face like Söhne Breit). NOT Playfair, NOT Inter.
-- Body: a clean grotesk that pairs with it (e.g., Söhne, Neue Haas Grotesk, or Inter Tight as a free fallback).
+- Display: Fraunces (Google Fonts) — optical-size serif with architectural weight. NOT Playfair, NOT Inter.
+- Body: Inter Tight (Google Fonts) — clean grotesk pairing.
 - Tight tracking on display, generous line-height on body.
 
 ### Spacing & Layout
@@ -84,7 +84,7 @@ Black and white, editorial, architectural. Reference: curtisdesigngroup.com/cont
 
 ## Constraints (do not do)
 - No purple gradients, no glassmorphism, no generic SaaS hero patterns.
-- No animation libraries beyond GSAP + Framer Motion + Lenis.
+- No animation libraries beyond GSAP + Framer Motion + Locomotive Scroll.
 - No CSS-in-JS runtime (styled-components, Emotion). Tailwind + CSS variables only.
 - No placeholder Lorem Ipsum in final output — use realistic architectural copy.
 
@@ -92,4 +92,4 @@ Black and white, editorial, architectural. Reference: curtisdesigngroup.com/cont
 - frontend-design — apply on every UI task
 - gsap-scrolltrigger — for all scroll choreography
 - motion-framer — for component-level fades and transitions
-- webapp-testing — run after building any interactive feature
+- locomotive-scroll — for smooth scrolling setup

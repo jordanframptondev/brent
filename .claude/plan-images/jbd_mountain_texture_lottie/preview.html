@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Mountain Texture Lottie Preview</title>
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #f5f1e8, #d8d0c1);
+      font-family: system-ui, sans-serif;
+    }
+    #wrap {
+      width: min(1100px, 92vw);
+      border-radius: 24px;
+      overflow: hidden;
+      background: #ece7dc;
+      box-shadow: 0 24px 80px rgba(0,0,0,.14);
+    }
+    #lottie {
+      width: 100%;
+      aspect-ratio: 1536 / 1024;
+    }
+    .caption {
+      padding: 14px 18px;
+      font-size: 14px;
+      color: #333;
+      background: rgba(255,255,255,.55);
+    }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <div id="lottie"></div>
+    <div class="caption">Fluid mountain texture transition — transparent PNG layers over page background.</div>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+  <script>
+    lottie.loadAnimation({
+      container: document.getElementById('lottie'),
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      path: 'mountain-texture-fluid-transition.lottie.json'
+    });
+  </script>
+</body>
+</html>
