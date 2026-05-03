@@ -10,8 +10,6 @@ gsap.registerPlugin(ScrollTrigger);
 const TEXTURES = [
   "/textures/bg/image1_black_white_transparent.png",
   "/textures/bg/image2_black_white_transparent.png",
-  "/textures/bg/image3_black_white_transparent.png",
-  "/textures/bg/image3_alt_black_white_transparent.png",
 ];
 
 const MAX_OPACITY = 0.12;
@@ -36,11 +34,10 @@ export default function BackgroundTextures() {
       if (el) gsap.set(el, { opacity: i === 0 ? MAX_OPACITY : 0 });
     });
 
-    // Defer so page content is rendered and scroll height is accurate
     const frame = requestAnimationFrame(() => {
       const layers = layerRefs.current;
 
-      // Timeline: slow crossfades tied to scroll, last image stays
+      // Single crossfade: 1 → 2 on scroll down, reverses on scroll up
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: document.body,
@@ -50,17 +47,8 @@ export default function BackgroundTextures() {
         },
       });
 
-      // Crossfade 0 → 1 (first third)
       tl.to(layers[0], { opacity: 0, duration: 1 }, 0);
       tl.to(layers[1], { opacity: MAX_OPACITY, duration: 1 }, 0);
-
-      // Crossfade 1 → 2 (second third)
-      tl.to(layers[1], { opacity: 0, duration: 1 }, 1);
-      tl.to(layers[2], { opacity: MAX_OPACITY, duration: 1 }, 1);
-
-      // Crossfade 2 → 3 (final third — image 3 stays visible)
-      tl.to(layers[2], { opacity: 0, duration: 1 }, 2);
-      tl.to(layers[3], { opacity: MAX_OPACITY, duration: 1 }, 2);
 
       ScrollTrigger.refresh();
     });

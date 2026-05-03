@@ -16,7 +16,7 @@ export default function Landing() {
           priority
         />
 
-        <h1 className="max-w-3xl text-4xl text-ink sm:text-5xl lg:text-6xl">
+        <h1 className="max-w-3xl text-4xl text-ink sm:text-5xl lg:text-5xl">
           Custom Home Design
         </h1>
 

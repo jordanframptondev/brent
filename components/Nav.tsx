@@ -15,22 +15,22 @@ export default function Nav() {
           <Image
             src="/logo-no-tagline/jbd-logo-no-tagline-menu-160w.png"
             alt="JB|D Custom Home Design"
-            width={56}
-            height={19}
+            width={76}
+            height={25}
             className="hidden sm:block"
             priority
           />
           <Image
             src="/logo-no-tagline/jbd-logo-no-tagline-menu-160w.png"
             alt="JB|D Custom Home Design"
-            width={44}
-            height={15}
+            width={60}
+            height={20}
             className="block sm:hidden"
             priority
           />
         </Link>
 
-        <ul className="flex items-center gap-5 rounded-full bg-overlay-dim px-6 py-2.5 text-sm tracking-wide text-white/90 backdrop-blur-sm lg:gap-8 lg:px-8 lg:py-3 lg:text-base">
+        <ul className="flex items-center gap-5 rounded-full bg-overlay-dim px-6 py-2.5 text-sm tracking-wide text-ink/60 backdrop-blur-sm lg:gap-8 lg:px-8 lg:py-3 lg:text-base">
           <li>
             <Link
               href={projectsHref}

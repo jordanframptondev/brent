@@ -29,10 +29,10 @@ export default function Contact() {
     <section className="relative min-h-[100svh] pt-24">
       {/* Background texture */}
       <Image
-        src="/textures/Group 4530.png"
+        src="/textures/bg/image3_alt_black_white_transparent.png"
         alt=""
         fill
-        className="pointer-events-none object-cover opacity-[0.04]"
+        className="pointer-events-none object-cover opacity-[0.15]"
         aria-hidden="true"
       />
 
