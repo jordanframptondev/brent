@@ -3,79 +3,139 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
-
-const TEXTURES = [
-  "/textures/bg/image1_black_white_transparent.png",
-  "/textures/bg/image2_black_white_transparent.png",
+const SRCS = [
+  "/textures/topo/topo-standalone-section-01.png",
+  "/textures/topo/topo-standalone-section-03.png",
+  "/textures/topo/topo-standalone-section-04.png",
+  "/textures/topo/topo-standalone-section-06.png",
+  "/textures/topo/topo-standalone-section-07.png",
+  "/textures/topo/topo-standalone-section-08.png",
 ];
 
-const MAX_OPACITY = 0.12;
+// Generate random non-overlapping starting positions
+function generatePositions() {
+  const positions: { x: number; y: number; rot: number }[] = [];
+  const pieceW = 55; // % of viewport
+  const pieceH = 60;
+
+  for (let i = 0; i < SRCS.length; i++) {
+    let x: number, y: number, attempts = 0;
+
+    // Try to place without overlapping (light touching ok)
+    do {
+      x = rand(-10, 100 - pieceW + 10);
+      y = rand(-10, 100 - pieceH + 10);
+      attempts++;
+    } while (
+      attempts < 50 &&
+      positions.some(
+        (p) =>
+          Math.abs(p.x - x) < pieceW * 0.75 &&
+          Math.abs(p.y - y) < pieceH * 0.75
+      )
+    );
+
+    positions.push({ x, y, rot: rand(-15, 15) });
+  }
+
+  return positions;
+}
+
+function rand(min: number, max: number) {
+  return Math.random() * (max - min) + min;
+}
+
+function organicDrift(el: HTMLElement) {
+  // Horizontal drift
+  const xTween = gsap.to(el, {
+    x: rand(40, 100) * (Math.random() > 0.5 ? 1 : -1),
+    duration: rand(8, 14),
+    ease: "sine.inOut",
+    yoyo: true,
+    repeat: -1,
+  });
+  xTween.progress(Math.random());
+
+  // Vertical drift
+  const yTween = gsap.to(el, {
+    y: rand(30, 80) * (Math.random() > 0.5 ? 1 : -1),
+    duration: rand(10, 18),
+    ease: "sine.inOut",
+    yoyo: true,
+    repeat: -1,
+  });
+  yTween.progress(Math.random());
+
+  // Rotation
+  const rotTween = gsap.to(el, {
+    rotation: rand(8, 20) * (Math.random() > 0.5 ? 1 : -1),
+    duration: rand(12, 22),
+    ease: "sine.inOut",
+    yoyo: true,
+    repeat: -1,
+  });
+  rotTween.progress(Math.random());
+
+  // Scale breathing
+  const scaleTween = gsap.to(el, {
+    scale: Math.random() > 0.5 ? rand(1.08, 1.18) : rand(0.85, 0.95),
+    duration: rand(7, 14),
+    ease: "sine.inOut",
+    yoyo: true,
+    repeat: -1,
+  });
+  scaleTween.progress(Math.random());
+}
 
 export default function BackgroundTextures() {
-  const layerRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const pieceRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const positionsRef = useRef(generatePositions());
 
   useEffect(() => {
     const prefersReduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    if (prefersReduced) {
-      layerRefs.current.forEach((el, i) => {
-        if (el) el.style.opacity = i === 0 ? String(MAX_OPACITY) : "0";
-      });
-      return;
-    }
+    if (prefersReduced) return;
 
-    // Set initial state
-    layerRefs.current.forEach((el, i) => {
-      if (el) gsap.set(el, { opacity: i === 0 ? MAX_OPACITY : 0 });
+    const ctx = gsap.context(() => {
+      pieceRefs.current.forEach((el) => {
+        if (!el) return;
+        organicDrift(el);
+      });
     });
 
-    const frame = requestAnimationFrame(() => {
-      const layers = layerRefs.current;
-
-      // Single crossfade: 1 → 2 on scroll down, reverses on scroll up
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: document.body,
-          start: "top top",
-          end: "bottom bottom",
-          scrub: 1.5,
-        },
-      });
-
-      tl.to(layers[0], { opacity: 0, duration: 1 }, 0);
-      tl.to(layers[1], { opacity: MAX_OPACITY, duration: 1 }, 0);
-
-      ScrollTrigger.refresh();
-    });
-
-    return () => {
-      cancelAnimationFrame(frame);
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
+    return () => ctx.revert();
   }, []);
 
+  const positions = positionsRef.current;
+
   return (
-    <div className="pointer-events-none fixed inset-0 z-0" aria-hidden="true">
-      {TEXTURES.map((src, i) => (
+    <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
+      {SRCS.map((src, i) => (
         <div
           key={src}
           ref={(el) => {
-            layerRefs.current[i] = el;
+            pieceRefs.current[i] = el;
           }}
-          className="absolute inset-0"
-          style={{ opacity: i === 0 ? MAX_OPACITY : 0 }}
+          className="absolute"
+          style={{
+            left: `${positions[i].x}%`,
+            top: `${positions[i].y}%`,
+            width: "55%",
+            height: "60%",
+            opacity: 0.12,
+            transform: `rotate(${positions[i].rot}deg)`,
+            willChange: "transform",
+          }}
         >
           <Image
             src={src}
             alt=""
             fill
-            className="object-cover"
-            priority={i === 0}
+            sizes="55vw"
+            className="object-contain"
           />
         </div>
       ))}

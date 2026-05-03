@@ -1,11 +1,11 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #ffffff;
-  --ink: #0a0a0a;
-  --ink-soft: #1a1a1a;
-  --rule: rgba(10, 10, 10, 0.12);
-  --overlay-dim: rgb(211 211 211 / 0.06);
+  --bg: #1e1e1e;
+  --ink: #f0ece6;
+  --ink-soft: #c4b9a8;
+  --rule: rgba(196, 185, 168, 0.15);
+  --overlay-dim: rgba(30, 30, 30, 0.6);
 }
 
 @theme inline {

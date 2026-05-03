@@ -8,15 +8,15 @@ export default function Landing() {
     <section className="relative z-10 flex h-dvh w-full items-center justify-center">
       <div className="flex flex-col items-center px-6 text-center">
         <Image
-          src="/logo-no-tagline/jbd-logo-no-tagline-hero-720w.png"
+          src="/logo/jbd-logo-no-tagline-clean-hero-720w.png"
           alt="JB|D Custom Home Design"
           width={280}
           height={93}
-          className="w-45 sm:w-60 lg:w-70"
+          className="h-auto w-45 brightness-0 invert sm:w-60 lg:w-70"
           priority
         />
 
-        <h1 className="max-w-3xl text-4xl text-ink sm:text-5xl lg:text-5xl">
+        <h1 className="max-w-3xl text-4xl text-ink">
           Custom Home Design
         </h1>
 
@@ -27,7 +27,7 @@ export default function Landing() {
 
       {/* Scroll cue */}
       <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        className="absolute bottom-10 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
         animate={{ y: [0, 8, 0] }}
         transition={{
           duration: 2,
@@ -35,6 +35,9 @@ export default function Landing() {
           ease: [0.45, 0, 0.55, 1],
         }}
       >
+        <span className="text-xs tracking-widest text-ink-soft">
+          [view projects]
+        </span>
         <svg
           width="24"
           height="14"

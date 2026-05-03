@@ -147,7 +147,7 @@ export default function Contact() {
 
           <button
             type="submit"
-            className="mt-4 self-start border border-ink px-10 py-3 font-body text-sm uppercase tracking-[0.15em] text-ink transition-all duration-300 hover:bg-ink hover:text-bg"
+            className="mt-4 self-start border border-ink-soft px-10 py-3 font-body text-sm uppercase tracking-[0.15em] text-ink transition-all duration-300 hover:bg-ink-soft hover:text-bg"
           >
             Send Inquiry
           </button>

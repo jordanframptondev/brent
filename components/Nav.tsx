@@ -13,19 +13,19 @@ export default function Nav() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
         <Link href="/" aria-label="JB|D Home">
           <Image
-            src="/logo-no-tagline/jbd-logo-no-tagline-menu-160w.png"
+            src="/logo/jbd-logo-no-tagline-clean-menu-160w.png"
             alt="JB|D Custom Home Design"
             width={76}
             height={25}
-            className="hidden sm:block"
+            className="hidden h-auto brightness-0 invert sm:block"
             priority
           />
           <Image
-            src="/logo-no-tagline/jbd-logo-no-tagline-menu-160w.png"
+            src="/logo/jbd-logo-no-tagline-clean-menu-160w.png"
             alt="JB|D Custom Home Design"
             width={60}
             height={20}
-            className="block sm:hidden"
+            className="block h-auto brightness-0 invert sm:hidden"
             priority
           />
         </Link>

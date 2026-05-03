@@ -69,6 +69,7 @@ export default function ImageCarousel({ images, alt }: ImageCarouselProps) {
               src={images[index]}
               alt={`${alt} — ${index + 1} of ${images.length}`}
               fill
+              sizes="(min-width: 768px) 66vw, 100vw"
               className="pointer-events-none object-cover"
             />
           </motion.div>
