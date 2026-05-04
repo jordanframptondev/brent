@@ -11,33 +11,23 @@ const SRCS = [
   "/textures/topo/topo-standalone-section-08.png",
 ];
 
-// Generate random non-overlapping starting positions
+// Vertical zones per texture: top, top, middle, bottom — with random x and rotation
+const ZONES: [number, number][] = [
+  [-10, 5],    // top
+  [0, 15],     // upper
+  [25, 45],    // middle
+  [50, 70],    // bottom
+];
+
 function generatePositions() {
-  const positions: { x: number; y: number; rot: number }[] = [];
-  const pieceW = 55; // % of viewport
-  const pieceH = 60;
-
-  for (let i = 0; i < SRCS.length; i++) {
-    let x: number, y: number, attempts = 0;
-
-    // Try to place without overlapping (light touching ok)
-    do {
-      x = rand(-10, 100 - pieceW + 10);
-      y = rand(-10, 100 - pieceH + 10);
-      attempts++;
-    } while (
-      attempts < 50 &&
-      positions.some(
-        (p) =>
-          Math.abs(p.x - x) < pieceW * 0.75 &&
-          Math.abs(p.y - y) < pieceH * 0.75
-      )
-    );
-
-    positions.push({ x, y, rot: rand(-15, 15) });
-  }
-
-  return positions;
+  return SRCS.map((_, i) => {
+    const [yMin, yMax] = ZONES[i] ?? [0, 70];
+    return {
+      x: rand(0, 35),
+      y: rand(yMin, yMax),
+      rot: rand(-12, 12),
+    };
+  });
 }
 
 function rand(min: number, max: number) {
@@ -115,7 +105,7 @@ export default function BackgroundTextures() {
           ref={(el) => {
             pieceRefs.current[i] = el;
           }}
-          className="absolute w-[100vw] h-[105vw] md:w-[65vw] md:h-[70vw]"
+          className="absolute w-[100vw] h-[105vw] md:w-[900px] md:h-[950px]"
           style={{
             left: `${positions[i].x}%`,
             top: `${positions[i].y}%`,
@@ -128,7 +118,7 @@ export default function BackgroundTextures() {
             src={src}
             alt=""
             fill
-            sizes="(min-width: 768px) 65vw, 100vw"
+            sizes="(min-width: 768px) 900px, 100vw"
             className="object-contain"
           />
         </div>
