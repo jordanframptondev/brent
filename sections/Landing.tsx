@@ -12,7 +12,7 @@ export default function Landing() {
           alt="JB|D Custom Home Design"
           width={280}
           height={93}
-          className="h-auto w-45 sm:w-60 lg:w-70"
+          className="h-auto w-45 sm:w-60"
           priority
         />
 

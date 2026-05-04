@@ -106,7 +106,7 @@ export default function FullscreenGallery({
               alt={`${alt} — ${index + 1} of ${images.length}`}
               fill
               sizes="100vw"
-              className="pointer-events-none object-contain"
+              className="pointer-events-none object-contain grayscale"
             />
           </motion.div>
         </AnimatePresence>

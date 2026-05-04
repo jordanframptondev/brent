@@ -99,46 +99,46 @@ export default function Contact() {
                 value={formState.name}
                 onChange={handleChange}
                 placeholder="Your name"
-                className="rounded border border-rule bg-ink/[0.09] px-4 py-3 font-body text-base text-ink outline-none transition-colors placeholder:text-ink-soft/30 focus:border-ink-soft/40 focus:bg-ink/[0.13]"
+                className={`rounded border px-4 py-3 font-body text-base text-white outline-none transition-colors placeholder:text-black focus:border-ink-soft/40 ${formState.name ? "border-ink-soft/30 bg-ink/[0.25]" : "border-ink-soft/15 bg-ink/[0.45]"}`}
               />
             </div>
 
             <div className="flex flex-col gap-1.5">
               <label
-                htmlFor="email"
+                htmlFor="phone"
                 className="font-body text-xs uppercase tracking-[0.15em] text-ink/70"
               >
-                Email
+                Phone <span className="normal-case tracking-normal text-ink-soft/40">(optional)</span>
               </label>
               <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                value={formState.email}
+                id="phone"
+                name="phone"
+                type="tel"
+                maxLength={14}
+                value={formState.phone}
                 onChange={handleChange}
-                placeholder="your@email.com"
-                className="rounded border border-rule bg-ink/[0.09] px-4 py-3 font-body text-base text-ink outline-none transition-colors placeholder:text-ink-soft/30 focus:border-ink-soft/40 focus:bg-ink/[0.13]"
+                placeholder="(000) 000-0000"
+                className={`rounded border px-4 py-3 font-body text-base text-white outline-none transition-colors placeholder:text-black focus:border-ink-soft/40 ${formState.phone ? "border-ink-soft/30 bg-ink/[0.25]" : "border-ink-soft/15 bg-ink/[0.45]"}`}
               />
             </div>
           </div>
 
           <div className="flex flex-col gap-1.5">
             <label
-              htmlFor="phone"
+              htmlFor="email"
               className="font-body text-xs uppercase tracking-[0.15em] text-ink/70"
             >
-              Phone
+              Email
             </label>
             <input
-              id="phone"
-              name="phone"
-              type="tel"
-              maxLength={14}
-              value={formState.phone}
+              id="email"
+              name="email"
+              type="email"
+              required
+              value={formState.email}
               onChange={handleChange}
-              placeholder="(000) 000-0000"
-              className="rounded border border-rule bg-ink/[0.09] px-4 py-3 font-body text-base text-ink outline-none transition-colors placeholder:text-ink-soft/30 focus:border-ink-soft/40 focus:bg-ink/[0.13]"
+              placeholder="your@email.com"
+              className={`rounded border px-4 py-3 font-body text-base text-white outline-none transition-colors placeholder:text-black focus:border-ink-soft/40 ${formState.email ? "border-ink-soft/30 bg-ink/[0.25]" : "border-ink-soft/15 bg-ink/[0.45]"}`}
             />
           </div>
 
@@ -150,8 +150,8 @@ export default function Contact() {
               <label
                 className={`cursor-pointer rounded border px-5 py-2.5 font-body text-sm tracking-wide transition-all ${
                   formState.userType === "homeowner"
-                    ? "border-ink-soft/40 bg-ink/[0.08] text-ink"
-                    : "border-rule bg-ink/[0.08] text-ink-soft/60 hover:border-ink-soft/25 hover:text-ink-soft"
+                    ? "border-ink-soft/30 bg-ink/[0.25] text-white"
+                    : "border-ink-soft/15 bg-ink/[0.45] text-black hover:border-ink-soft/25 hover:text-black/80"
                 }`}
               >
                 <input
@@ -167,8 +167,8 @@ export default function Contact() {
               <label
                 className={`cursor-pointer rounded border px-5 py-2.5 font-body text-sm tracking-wide transition-all ${
                   formState.userType === "developer"
-                    ? "border-ink-soft/40 bg-ink/[0.08] text-ink"
-                    : "border-rule bg-ink/[0.08] text-ink-soft/60 hover:border-ink-soft/25 hover:text-ink-soft"
+                    ? "border-ink-soft/30 bg-ink/[0.25] text-white"
+                    : "border-ink-soft/15 bg-ink/[0.45] text-black hover:border-ink-soft/25 hover:text-black/80"
                 }`}
               >
                 <input
@@ -196,10 +196,11 @@ export default function Contact() {
               name="message"
               rows={5}
               required
+              maxLength={2000}
               value={formState.message}
               onChange={handleChange}
               placeholder="Tell us about your project..."
-              className="resize-none rounded border border-rule bg-ink/[0.09] px-4 py-3 font-body text-base text-ink outline-none transition-colors placeholder:text-ink-soft/30 focus:border-ink-soft/40 focus:bg-ink/[0.13]"
+              className={`resize-none rounded border px-4 py-3 font-body text-base text-white outline-none transition-colors placeholder:text-black focus:border-ink-soft/40 ${formState.message ? "border-ink-soft/30 bg-ink/[0.25]" : "border-ink-soft/15 bg-ink/[0.45]"}`}
             />
           </div>
 

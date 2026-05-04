@@ -117,12 +117,10 @@ export default function BackgroundTextures() {
           ref={(el) => {
             pieceRefs.current[i] = el;
           }}
-          className="absolute"
+          className="absolute w-[90vw] h-[95vw] md:w-[55vw] md:h-[60vw]"
           style={{
             left: `${positions[i].x}%`,
             top: `${positions[i].y}%`,
-            width: "55%",
-            height: "60%",
             opacity: 0.12,
             transform: `rotate(${positions[i].rot}deg)`,
             willChange: "transform",
@@ -132,7 +130,7 @@ export default function BackgroundTextures() {
             src={src}
             alt=""
             fill
-            sizes="55vw"
+            sizes="(min-width: 768px) 55vw, 90vw"
             className="object-contain"
           />
         </div>

@@ -23,6 +23,7 @@ export default function ProjectCarousel({
 }: CarouselProps) {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [bw, setBw] = useState(true);
 
   const paginate = useCallback(
     (dir: number) => {
@@ -72,7 +73,7 @@ export default function ProjectCarousel({
               alt={`${alt} — ${index + 1} of ${images.length}`}
               fill
               sizes="(min-width: 768px) 60vw, 100vw"
-              className="pointer-events-none object-cover"
+              className={`pointer-events-none object-cover transition-[filter] duration-500 ${bw ? "grayscale" : "grayscale-0"}`}
             />
           </motion.div>
         </AnimatePresence>
@@ -80,12 +81,20 @@ export default function ProjectCarousel({
 
       {/* Bottom bar: fullscreen link + arrows */}
       <div className="flex items-center justify-between pt-4">
-        <button
-          onClick={onOpenFullscreen}
-          className="text-xs tracking-[0.15em] text-ink-soft/40 transition-colors hover:text-ink"
-        >
-          [full gallery]
-        </button>
+        <div className="flex items-center gap-4">
+          <button
+            onClick={onOpenFullscreen}
+            className="text-xs tracking-[0.15em] text-ink transition-colors hover:text-ink"
+          >
+            [full gallery]
+          </button>
+          <button
+            onClick={() => setBw((v) => !v)}
+            className="text-xs tracking-[0.15em] text-ink transition-colors hover:text-ink"
+          >
+            [{bw ? "color" : "b&w"}]
+          </button>
+        </div>
 
         {images.length > 1 && (
           <CarouselArrows

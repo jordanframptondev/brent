@@ -9,8 +9,8 @@ export default function Nav() {
   const contactHref = pathname === "/" ? "#contact" : "/#contact";
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 mix-blend-difference">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+    <nav className="fixed top-0 left-0 right-0 z-50">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <Link href="/" aria-label="JB|D Home">
           <Image
             src="/logo/jbd-logo-no-tagline-clean-menu-160w_light.png"
@@ -30,7 +30,7 @@ export default function Nav() {
           />
         </Link>
 
-        <ul className="flex items-center gap-5 px-6 py-2.5 text-sm tracking-wide text-white lg:gap-8 lg:px-8 lg:py-3 lg:text-base">
+        <ul className="flex items-center gap-5 rounded-full bg-black/30 px-6 py-2.5 text-sm tracking-wide text-white backdrop-blur-md">
           <li>
             <Link
               href={contactHref}
