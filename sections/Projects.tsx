@@ -1,7 +1,6 @@
 "use client";
 
-import ImageCarousel from "@/components/ImageCarousel";
-import { useFadeIn } from "@/lib/useFadeIn";
+import ProjectCard from "@/components/ProjectCard";
 
 const projects = [
   {
@@ -42,52 +41,11 @@ const projects = [
   },
 ];
 
-function ProjectSection({
-  project,
-}: {
-  project: (typeof projects)[number];
-}) {
-  const infoRef = useFadeIn<HTMLDivElement>();
-
-  return (
-    <article className="border-t border-rule py-16 first:border-t-0 lg:py-24">
-      <div className="mx-auto grid max-w-7xl gap-6 px-6 md:grid-cols-[1fr_2fr] md:gap-10 lg:px-10">
-        {/* Project info — left on md+, above on mobile */}
-        <div ref={infoRef} className="flex flex-col justify-start">
-          <h3
-            data-fade
-            className="text-3xl text-ink sm:text-4xl lg:text-5xl"
-          >
-            {project.name}
-          </h3>
-          <span
-            data-fade
-            className="mt-3 block text-xs uppercase tracking-[0.15em] text-ink-soft/50"
-          >
-            {project.location} &mdash; {project.year}
-          </span>
-          <p
-            data-fade
-            className="mt-4 max-w-sm text-sm leading-relaxed text-ink-soft sm:text-base"
-          >
-            {project.description}
-          </p>
-        </div>
-
-        {/* Image carousel */}
-        <div className="aspect-[4/3] w-full lg:aspect-[3/2]">
-          <ImageCarousel images={project.images} alt={project.name} />
-        </div>
-      </div>
-    </article>
-  );
-}
-
 export default function Projects() {
   return (
-    <section id="projects" className="relative z-10 py-16 lg:py-24">
+    <section id="projects" className="relative z-10 pt-4 pb-16 lg:pt-6 lg:pb-24">
       {projects.map((project) => (
-        <ProjectSection key={project.name} project={project} />
+        <ProjectCard key={project.name} project={project} />
       ))}
     </section>
   );

@@ -1,4 +1,5 @@
 import Nav from "@/components/Nav";
+import Footer from "@/components/Footer";
 import Landing from "@/sections/Landing";
 import Projects from "@/sections/Projects";
 import BackgroundTextures from "@/lib/BackgroundTextures";
@@ -12,6 +13,7 @@ export default function Home() {
         <Landing />
         <Projects />
       </main>
+      <Footer />
     </>
   );
 }

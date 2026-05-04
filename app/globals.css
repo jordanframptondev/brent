@@ -14,11 +14,17 @@
   --color-ink-soft: var(--ink-soft);
   --color-rule: var(--rule);
   --color-overlay-dim: var(--overlay-dim);
-  --font-display: var(--font-outfit);
-  --font-body: var(--font-outfit);
+  --font-display: var(--font-plus-jakarta);
+  --font-body: var(--font-plus-jakarta);
+}
+
+html {
+  overflow-x: hidden;
+  min-width: 325px;
 }
 
 body {
+  overflow-x: hidden;
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-body), system-ui, sans-serif;

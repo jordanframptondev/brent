@@ -36,7 +36,7 @@ export default function Landing() {
         }}
       >
         <span className="text-xs tracking-widest text-ink-soft">
-          [view projects]
+          [contact]
         </span>
         <svg
           width="24"

@@ -39,7 +39,7 @@ export default function Contact() {
       <div className="relative z-10 mx-auto grid max-w-7xl gap-16 px-6 py-16 lg:grid-cols-[1fr_2fr] lg:gap-24 lg:px-10 lg:py-24">
         {/* About column */}
         <div className="flex flex-col">
-          <h1 className="font-display text-3xl font-light text-ink sm:text-4xl lg:text-5xl">
+          <h1 className="font-display text-3xl font-light text-ink sm:text-5xl">
             Get in Touch
           </h1>
 

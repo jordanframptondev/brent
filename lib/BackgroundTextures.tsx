@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 
@@ -90,7 +90,7 @@ function organicDrift(el: HTMLElement) {
 
 export default function BackgroundTextures() {
   const pieceRefs = useRef<(HTMLDivElement | null)[]>([]);
-  const positionsRef = useRef(generatePositions());
+  const positions = useMemo(() => generatePositions(), []);
 
   useEffect(() => {
     const prefersReduced = window.matchMedia(
@@ -108,8 +108,6 @@ export default function BackgroundTextures() {
 
     return () => ctx.revert();
   }, []);
-
-  const positions = positionsRef.current;
 
   return (
     <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden" aria-hidden="true">
