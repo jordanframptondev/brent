@@ -6,9 +6,7 @@ import { gsap } from "gsap";
 
 const SRCS = [
   "/textures/topo/topo-standalone-section-01.png",
-  "/textures/topo/topo-standalone-section-03.png",
   "/textures/topo/topo-standalone-section-04.png",
-  "/textures/topo/topo-standalone-section-06.png",
   "/textures/topo/topo-standalone-section-07.png",
   "/textures/topo/topo-standalone-section-08.png",
 ];
@@ -117,7 +115,7 @@ export default function BackgroundTextures() {
           ref={(el) => {
             pieceRefs.current[i] = el;
           }}
-          className="absolute w-[90vw] h-[95vw] md:w-[55vw] md:h-[60vw]"
+          className="absolute w-[100vw] h-[105vw] md:w-[65vw] md:h-[70vw]"
           style={{
             left: `${positions[i].x}%`,
             top: `${positions[i].y}%`,
@@ -130,7 +128,7 @@ export default function BackgroundTextures() {
             src={src}
             alt=""
             fill
-            sizes="(min-width: 768px) 55vw, 90vw"
+            sizes="(min-width: 768px) 65vw, 100vw"
             className="object-contain"
           />
         </div>

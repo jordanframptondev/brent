@@ -32,7 +32,7 @@ function ArrowButton({
       whileTap={{ scale: 0.85 }}
       whileHover={{ scale: 1.1 }}
       aria-label={direction === "prev" ? "Previous image" : "Next image"}
-      className="relative flex h-12 w-12 cursor-pointer items-center justify-center text-ink-soft/40 transition-colors hover:text-ink"
+      className="relative flex h-12 w-12 cursor-pointer items-center justify-center text-white transition-colors hover:text-white/60"
     >
       {/* Ripple */}
       <motion.span
@@ -74,7 +74,7 @@ export default function CarouselArrows({
   return (
     <div className="flex items-center gap-2">
       <ArrowButton direction="prev" onClick={onPrev} />
-      <span className="text-sm tracking-[0.2em] text-ink-soft/40">
+      <span className="text-sm tracking-[0.2em] text-white">
         {display} / {totalDisplay}
       </span>
       <ArrowButton direction="next" onClick={onNext} />

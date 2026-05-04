@@ -84,13 +84,13 @@ export default function ProjectCarousel({
         <div className="flex items-center gap-4">
           <button
             onClick={onOpenFullscreen}
-            className="text-xs tracking-[0.15em] text-ink transition-colors hover:text-ink"
+            className="text-xs tracking-[0.15em] text-ink transition-colors hover:text-ink cursor-pointer"
           >
-            [full gallery]
+            [full screen]
           </button>
           <button
             onClick={() => setBw((v) => !v)}
-            className="text-xs tracking-[0.15em] text-ink transition-colors hover:text-ink"
+            className="text-xs tracking-[0.15em] text-ink transition-colors hover:text-ink cursor-pointer"
           >
             [{bw ? "color" : "b&w"}]
           </button>
