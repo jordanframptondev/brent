@@ -10,7 +10,7 @@ const projects = [
     type: "Architecture, Interiors",
     description:
       "A low-slung timber-and-stone residence tracing the contour of a high alpine ridge.",
-    images: Array(4).fill("/projects/image_coming_soon.jpg"),
+    images: Array(4).fill("/projects/placeholder.jpg"),
   },
   {
     name: "Ember Creek Residence",
@@ -19,7 +19,7 @@ const projects = [
     type: "Architecture, Landscape",
     description:
       "Deep overhangs and charred-wood cladding along a seasonal creek.",
-    images: Array(3).fill("/projects/image_coming_soon.jpg"),
+    images: Array(3).fill("/projects/placeholder.jpg"),
   },
   {
     name: "Summit Overlook",
@@ -28,7 +28,7 @@ const projects = [
     type: "Architecture, Interiors",
     description:
       "Cantilevered over a steep wooded slope with split-level living areas.",
-    images: Array(4).fill("/projects/image_coming_soon.jpg"),
+    images: Array(4).fill("/projects/placeholder.jpg"),
   },
   {
     name: "Cedar Draw Retreat",
@@ -37,7 +37,7 @@ const projects = [
     type: "Architecture, Landscape",
     description:
       "Reclaimed materials and passive solar orientation in a high-desert setting.",
-    images: Array(3).fill("/projects/image_coming_soon.jpg"),
+    images: Array(3).fill("/projects/placeholder.jpg"),
   },
 ];
 

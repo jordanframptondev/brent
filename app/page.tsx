@@ -1,7 +1,7 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Landing from "@/sections/Landing";
-import Projects from "@/sections/Projects";
+import Contact from "@/sections/Contact";
 import BackgroundTextures from "@/lib/BackgroundTextures";
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
       <Nav />
       <main className="relative z-10">
         <Landing />
-        <Projects />
+        <Contact />
       </main>
       <Footer />
     </>

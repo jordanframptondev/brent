@@ -1,22 +1,32 @@
 "use client";
 
-import Image from "next/image";
 import { useState } from "react";
 
 export default function Contact() {
   const [formState, setFormState] = useState({
     name: "",
     email: "",
-    projectType: "",
+    phone: "",
+    userType: "",
     message: "",
   });
 
+  function formatPhone(value: string) {
+    const digits = value.replace(/\D/g, "").slice(0, 10);
+    if (digits.length <= 3) return digits.length ? `(${digits}` : "";
+    if (digits.length <= 6) return `(${digits.slice(0, 3)}) ${digits.slice(3)}`;
+    return `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`;
+  }
+
   function handleChange(
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) {
-    setFormState((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    const { name, value } = e.target;
+    if (name === "phone") {
+      setFormState((prev) => ({ ...prev, phone: formatPhone(value) }));
+    } else {
+      setFormState((prev) => ({ ...prev, [name]: value }));
+    }
   }
 
   function handleSubmit(e: React.FormEvent) {
@@ -26,111 +36,158 @@ export default function Contact() {
   }
 
   return (
-    <section className="relative min-h-[100svh] pt-24">
-      {/* Background texture */}
-      <Image
-        src="/textures/bg/image3_alt_black_white_transparent.png"
-        alt=""
-        fill
-        className="pointer-events-none object-cover opacity-[0.15]"
-        aria-hidden="true"
-      />
-
-      <div className="relative z-10 mx-auto grid max-w-7xl gap-16 px-6 py-16 lg:grid-cols-[1fr_2fr] lg:gap-24 lg:px-10 lg:py-24">
-        {/* About column */}
+    <section id="contact" className="relative min-h-[100svh] pt-12">
+      <div className="mx-auto grid max-w-7xl gap-16 px-6 py-16 lg:grid-cols-[1fr_2fr] lg:gap-24 lg:px-10 lg:py-24">
+        {/* Info column */}
         <div className="flex flex-col">
           <h1 className="font-display text-3xl font-light text-ink sm:text-5xl">
             Get in Touch
           </h1>
 
           <p className="mt-6 font-body text-sm leading-relaxed text-ink-soft sm:text-base">
-            JB|D Custom Home Design creates residences that belong to their
-            landscape. Every project begins with a conversation about how you
-            live, what the land offers, and where the two can meet.
+            Every exceptional home begins with a conversation. Whether
+            you&apos;re envisioning a new custom build or reimagining an
+            existing space, we&apos;d love to hear about your project and
+            explore how we can collaborate to bring your vision to life.
           </p>
 
           <div className="mt-8 border-t border-rule pt-8">
             <h2 className="mb-4 font-body text-xs uppercase tracking-[0.15em] text-ink-soft/60">
-              Credentials
+              Contact Info
             </h2>
-            <ul className="flex flex-col gap-2 font-body text-sm text-ink-soft">
-              <li>AIA Utah — Residential Design Award, 2023</li>
-              <li>NAHB Certified Green Professional</li>
-              <li>20+ years custom residential experience</li>
+            <ul className="flex flex-col gap-3 font-body text-sm text-ink-soft">
+              <li>
+                <a
+                  href="mailto:hello@jbddesign.com"
+                  className="transition-opacity hover:opacity-70"
+                >
+                  hello@jbddesign.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="tel:+18015550134"
+                  className="transition-opacity hover:opacity-70"
+                >
+                  (801) 555-0134
+                </a>
+              </li>
+              <li className="leading-snug">
+                247 Main Street, Suite 200
+                <br />
+                Park City, UT 84060
+              </li>
             </ul>
           </div>
         </div>
 
         {/* Form column */}
-        <form
-          onSubmit={handleSubmit}
-          className="flex flex-col gap-6"
-        >
-          <div className="flex flex-col gap-1.5">
-            <label
-              htmlFor="name"
-              className="font-body text-xs uppercase tracking-[0.15em] text-ink-soft/60"
-            >
-              Name
-            </label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              required
-              value={formState.name}
-              onChange={handleChange}
-              className="border-b border-rule bg-transparent py-3 font-body text-base text-ink outline-none transition-colors focus:border-ink"
-            />
+        <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+          <div className="grid gap-6 sm:grid-cols-2">
+            <div className="flex flex-col gap-1.5">
+              <label
+                htmlFor="name"
+                className="font-body text-xs uppercase tracking-[0.15em] text-ink/70"
+              >
+                Name
+              </label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                value={formState.name}
+                onChange={handleChange}
+                placeholder="Your name"
+                className="rounded border border-rule bg-ink/[0.09] px-4 py-3 font-body text-base text-ink outline-none transition-colors placeholder:text-ink-soft/30 focus:border-ink-soft/40 focus:bg-ink/[0.13]"
+              />
+            </div>
+
+            <div className="flex flex-col gap-1.5">
+              <label
+                htmlFor="email"
+                className="font-body text-xs uppercase tracking-[0.15em] text-ink/70"
+              >
+                Email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                value={formState.email}
+                onChange={handleChange}
+                placeholder="your@email.com"
+                className="rounded border border-rule bg-ink/[0.09] px-4 py-3 font-body text-base text-ink outline-none transition-colors placeholder:text-ink-soft/30 focus:border-ink-soft/40 focus:bg-ink/[0.13]"
+              />
+            </div>
           </div>
 
           <div className="flex flex-col gap-1.5">
             <label
-              htmlFor="email"
-              className="font-body text-xs uppercase tracking-[0.15em] text-ink-soft/60"
+              htmlFor="phone"
+              className="font-body text-xs uppercase tracking-[0.15em] text-ink/70"
             >
-              Email
+              Phone
             </label>
             <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              value={formState.email}
+              id="phone"
+              name="phone"
+              type="tel"
+              maxLength={14}
+              value={formState.phone}
               onChange={handleChange}
-              className="border-b border-rule bg-transparent py-3 font-body text-base text-ink outline-none transition-colors focus:border-ink"
+              placeholder="(000) 000-0000"
+              className="rounded border border-rule bg-ink/[0.09] px-4 py-3 font-body text-base text-ink outline-none transition-colors placeholder:text-ink-soft/30 focus:border-ink-soft/40 focus:bg-ink/[0.13]"
             />
           </div>
 
-          <div className="flex flex-col gap-1.5">
-            <label
-              htmlFor="projectType"
-              className="font-body text-xs uppercase tracking-[0.15em] text-ink-soft/60"
-            >
-              Project Type
-            </label>
-            <select
-              id="projectType"
-              name="projectType"
-              required
-              value={formState.projectType}
-              onChange={handleChange}
-              className="border-b border-rule bg-transparent py-3 font-body text-base text-ink outline-none transition-colors focus:border-ink"
-            >
-              <option value="" disabled>
-                Select a project type
-              </option>
-              <option value="new-build">New Custom Home</option>
-              <option value="renovation">Major Renovation</option>
-              <option value="addition">Addition</option>
-              <option value="consultation">Design Consultation</option>
-            </select>
+          <div className="flex flex-col gap-2">
+            <span className="font-body text-xs uppercase tracking-[0.15em] text-ink-soft/80">
+              I am a&hellip;
+            </span>
+            <div className="flex gap-3">
+              <label
+                className={`cursor-pointer rounded border px-5 py-2.5 font-body text-sm tracking-wide transition-all ${
+                  formState.userType === "homeowner"
+                    ? "border-ink-soft/40 bg-ink/[0.08] text-ink"
+                    : "border-rule bg-ink/[0.08] text-ink-soft/60 hover:border-ink-soft/25 hover:text-ink-soft"
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="userType"
+                  value="homeowner"
+                  checked={formState.userType === "homeowner"}
+                  onChange={handleChange}
+                  className="sr-only"
+                />
+                Homeowner
+              </label>
+              <label
+                className={`cursor-pointer rounded border px-5 py-2.5 font-body text-sm tracking-wide transition-all ${
+                  formState.userType === "developer"
+                    ? "border-ink-soft/40 bg-ink/[0.08] text-ink"
+                    : "border-rule bg-ink/[0.08] text-ink-soft/60 hover:border-ink-soft/25 hover:text-ink-soft"
+                }`}
+              >
+                <input
+                  type="radio"
+                  name="userType"
+                  value="developer"
+                  checked={formState.userType === "developer"}
+                  onChange={handleChange}
+                  className="sr-only"
+                />
+                Developer
+              </label>
+            </div>
           </div>
 
           <div className="flex flex-col gap-1.5">
             <label
               htmlFor="message"
-              className="font-body text-xs uppercase tracking-[0.15em] text-ink-soft/60"
+              className="font-body text-xs uppercase tracking-[0.15em] text-ink/70"
             >
               Message
             </label>
@@ -141,7 +198,8 @@ export default function Contact() {
               required
               value={formState.message}
               onChange={handleChange}
-              className="resize-none border-b border-rule bg-transparent py-3 font-body text-base text-ink outline-none transition-colors focus:border-ink"
+              placeholder="Tell us about your project..."
+              className="resize-none rounded border border-rule bg-ink/[0.09] px-4 py-3 font-body text-base text-ink outline-none transition-colors placeholder:text-ink-soft/30 focus:border-ink-soft/40 focus:bg-ink/[0.13]"
             />
           </div>
 

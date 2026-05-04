@@ -15,11 +15,11 @@ export default function Footer() {
         <div className="flex flex-col gap-4">
           <Link href="/">
             <Image
-              src="/logo/jbd-logo-no-tagline-clean-menu-160w.png"
+              src="/logo/jbd-logo-no-tagline-clean-menu-160w_light.png"
               alt="JB|D Custom Home Design"
               width={80}
               height={27}
-              className="h-auto brightness-0 invert"
+              className="h-auto"
             />
           </Link>
         </div>

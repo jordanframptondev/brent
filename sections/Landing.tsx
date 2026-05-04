@@ -8,11 +8,11 @@ export default function Landing() {
     <section className="relative z-10 flex h-dvh w-full items-center justify-center">
       <div className="flex flex-col items-center px-6 text-center">
         <Image
-          src="/logo/jbd-logo-no-tagline-clean-hero-720w.png"
+          src="/logo/jbd-logo-no-tagline-clean-hero-720w_light.png"
           alt="JB|D Custom Home Design"
           width={280}
           height={93}
-          className="h-auto w-45 brightness-0 invert sm:w-60 lg:w-70"
+          className="h-auto w-45 sm:w-60 lg:w-70"
           priority
         />
 
